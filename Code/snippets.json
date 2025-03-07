@@ -1,0 +1,71 @@
+{
+    "Plan Template": {
+        "prefix": "plan",
+        "body": [
+            "PLAN: {",
+            "    NAME: \"${1:Plan Name}\"",
+            "    GOAL: ${2:GOAL} ${3:Parameter};",
+            "    BODY:",
+            "        ${4:Actions}",
+            "}"
+        ],
+        "description": "Template for defining a PLAN in JAM."
+    },
+    "Goal Definition": {
+        "prefix": "goal",
+        "body": [
+            "GOALS:",
+            "    ACHIEVE ${1:goal_name};"
+        ],
+        "description": "Defines a GOAL that the JAM agent should achieve."
+    },
+    "Fact Definition": {
+        "prefix": "fact",
+        "body": [
+            "FACTS:",
+            "    FACT ${1:name} \"${2:value}\";"
+        ],
+        "description": "Defines a FACT in the agent's world model."
+    },
+    "WHEN Condition": {
+        "prefix": "when",
+        "body": [
+            "WHEN : TEST (${1:condition})",
+            "{",
+            "    ${2:action}",
+            "}"
+        ],
+        "description": "Executes an action when a condition is met."
+    },
+    "PERFORM Action": {
+        "prefix": "perform",
+        "body": [
+            "PERFORM ${1:action} ${2:parameter};"
+        ],
+        "description": "Instructs the agent to execute a goal."
+    },
+    "EXECUTE Command": {
+        "prefix": "execute",
+        "body": [
+            "EXECUTE print \"${1:message}\";"
+        ],
+        "description": "Prints a message to the console."
+    },
+    "ASSIGN Variable": {
+        "prefix": "assign",
+        "body": [
+            "ASSIGN $${1:var_name} ${2:value};"
+        ],
+        "description": "Assigns a value to a variable."
+    },
+    "WHILE Loop": {
+        "prefix": "while",
+        "body": [
+            "WHILE : TEST (${1:condition})",
+            "{",
+            "    ${2:actions}",
+            "}"
+        ],
+        "description": "Creates a loop that executes while the condition is true."
+    }
+}

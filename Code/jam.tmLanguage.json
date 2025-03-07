@@ -1,0 +1,38 @@
+{
+    "scopeName": "source.jam",
+    "patterns": [
+        {
+            "name": "keyword.control.jam",
+            "match": "\\b(GOALS|FACTS|PLAN|WHEN|PERFORM|EXECUTE|TEST|ASSIGN|WHILE|FAILURE|NAME|BODY|GOAL|RETRIEVEALL|NEXTFACT|ACHIEVE|ASSERT|RETRACT|QUERY|POST|UPDATE|WAIT|MAINTAIN)\\b"
+        },
+        {
+            "name": "constant.language.boolean.jam",
+            "match": "\\b(true|false)\\b"
+        },
+        {
+            "name": "support.function.jam",
+            "match": "\\b(PERFORM)\\s+\\w+\\b"
+        },
+        {
+            "name": "comment.line.jam",
+            "match": "//.*$"
+        },
+        {
+            "name": "comment.block.jam",
+            "begin": "/\\*",
+            "end": "\\*/"
+        },
+        {
+            "name": "string.quoted.double.jam",
+            "match": "\"(?:[^\"\\\\]|\\\\.)*\""
+        },
+        {
+            "name": "constant.numeric.jam",
+            "match": "\\b\\d+\\b"
+        },
+        {
+            "name": "variable.parameter.jam",
+            "match": "\\$[A-Za-z_][A-Za-z0-9_]*"
+        }
+    ]
+}

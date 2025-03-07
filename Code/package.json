@@ -1,0 +1,60 @@
+{
+    "name": "jam-agent-syntax",
+    "displayName": "JAM Agent Syntax",
+    "description": "Syntax highlighting, hover explanations, autocomplete, and error detection for JAM Agent in VS Code.",
+    "version": "1.5.0",
+    "publisher": "Roberto-Cezar",
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "engines": {
+        "vscode": "^1.50.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "activationEvents": [
+        "onLanguage:jam"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "jam",
+                "aliases": [
+                    "JAM",
+                    "JAM Agent"
+                ],
+                "extensions": [
+                    ".jam"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "jam",
+                "scopeName": "source.jam",
+                "path": "./jam.tmLanguage.json"
+            }
+        ],
+        "configuration": "./language-configuration.json",
+        "snippets": [
+            {
+                "language": "jam",
+                "path": "./snippets.json"
+            }
+        ],
+        "commands": [
+            {
+                "command": "extension.provideHover",
+                "title": "Provide JAM Hover Information"
+            },
+            {
+                "command": "extension.provideCompletion",
+                "title": "Provide JAM Autocomplete Suggestions"
+            }
+        ]
+    },
+    "main": "./extension.js"
+}

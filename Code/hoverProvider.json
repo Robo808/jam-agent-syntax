@@ -1,0 +1,47 @@
+{
+    "GOALS": "Defines the top-level objectives the agent aims to achieve. Examples include ACHIEVE, PERFORM, MAINTAIN, and QUERY.\n\nExample:\nGOALS:\n    ACHIEVE move_to \"Office\";",
+
+    "FACTS": "Stores information in the agent's world model. Used for knowledge representation.\n\nExample:\nFACTS:\n    FACT location \"Home\";",
+
+    "PLAN": "Defines a structured sequence of actions the agent will take to accomplish a goal.\n\nExample:\nPLAN: {\n    NAME: \"Travel\"\n    GOAL: ACHIEVE move_to $destination;\n    BODY:\n        EXECUTE print \"Moving...\";\n}",
+    
+    "WHEN": "Executes actions based on a condition being met. Similar to an IF-THEN structure in programming.\n\nExample:\nWHEN : TEST ( == $location \"Home\" )\n{\n    EXECUTE print \"Agent is at home.\";\n}",
+
+    "PERFORM": "Instructs the agent to execute a specific goal. Unlike ACHIEVE, it does not check if the goal is already completed.\n\nExample:\nPERFORM greet \"Alice\";",
+
+    "EXECUTE": "Runs a command, often used for output operations or invoking Java functions.\n\nExample:\nEXECUTE print \"Hello, World!\";",
+
+    "TEST": "Evaluates a condition before executing the subsequent actions.\n\nExample:\nTEST ( > $battery 50 )",
+
+    "ASSIGN": "Assigns a value to a variable within the agent’s execution scope.\n\nExample:\nASSIGN $name \"Agent1\";\nASSIGN $age 5;",
+
+    "WHILE": "Creates a loop that continues execution as long as a condition holds true.\n\nExample:\nWHILE : TEST (< $counter 5)\n{\n    EXECUTE print \"Counter: \" $counter;\n    ASSIGN $counter (+ $counter 1);\n}",
+
+    "FAILURE": "Defines what actions should be taken if a plan or action fails.\n\nExample:\nPLAN: {\n    NAME: \"Handle Failure\"\n    GOAL: PERFORM risky_action;\n    BODY:\n        EXECUTE print \"Trying risky action...\";\n    FAILURE:\n        EXECUTE print \"Plan failed, retrying...\";\n        PERFORM risky_action;\n}",
+
+    "NAME": "Provides a human-readable label for a plan. Used for documentation but does not affect execution.\n\nExample:\nPLAN: {\n    NAME: \"Move to location\"\n}",
+
+    "BODY": "Contains the sequence of actions to be executed in a plan.\n\nExample:\nPLAN: {\n    BODY:\n        EXECUTE print \"Executing actions...\";\n}",
+
+    "GOAL": "Defines the specific objective that a plan is meant to accomplish.\n\nExample:\nPLAN: {\n    GOAL: ACHIEVE move_to \"Office\";\n}",
+
+    "RETRIEVEALL": "Fetches all matching facts from the agent’s world model and stores them for iteration.\n\nExample:\nRETRIEVEALL $itemall item $val;",
+
+    "NEXTFACT": "Retrieves the next fact from a list previously fetched using RETRIEVEALL.\n\nExample:\nNEXTFACT $itemall item $val;",
+
+    "ACHIEVE": "Ensures a goal is completed before proceeding. Unlike PERFORM, it checks whether the goal is already accomplished.\n\nExample:\nACHIEVE move_to \"Office\";",
+
+    "ASSERT": "Adds a new fact to the world model. Similar to inserting data into a database.\n\nExample:\nASSERT FACT weather \"Sunny\";",
+
+    "RETRACT": "Removes a fact from the world model.\n\nExample:\nRETRACT FACT weather \"Rainy\";",
+
+    "QUERY": "Checks the world model for a fact without modifying it.\n\nExample:\nQUERY weather $condition;\nEXECUTE print \"The weather is \" $condition;",
+
+    "POST": "Adds a new top-level goal to the agent’s intention structure, making it persistent until explicitly removed.\n\nExample:\nPOST GOAL move_to \"Office\";",
+
+    "UPDATE": "Modifies an existing fact in the world model by replacing it with new values.\n\nExample:\nUPDATE FACT weather \"Rainy\";",
+
+    "WAIT": "Pauses execution until a condition is met or a specified goal is achieved.\n\nExample:\nWAIT ( == $status \"Ready\" );",
+    
+    "MAINTAIN": "Ensures a goal remains true over time, triggering corrective actions if necessary.\n\nExample:\nMAINTAIN FACT battery_level (> $battery 20);"
+}
