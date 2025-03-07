@@ -6,8 +6,9 @@
     "publisher": "Roberto-Cezar",
     "repository": {
         "type": "git",
-        "url": ""
+        "url": "https://github.com/Robo808/jam-agent-syntax.git"
     },
+    "license": "MIT",
     "engines": {
         "vscode": "^1.50.0"
     },
