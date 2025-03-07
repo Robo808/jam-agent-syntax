@@ -22,8 +22,8 @@ function activate(context) {
         const diagnostics = [];
         const text = document.getText();
 
-        // Check for missing {}
-        const planExists = text.match(/\bPLAN:\b/); // Check if "PLAN:" exists anywhere
+        // Check for missing `{}` in PLAN definition
+        const planExists = text.match(/\bPLAN:\b/);
         if (planExists) {
             const planMatches = text.match(/PLAN:\s*{\s*([\s\S]*?)\s*}/g);
             if (!planMatches || planMatches.length === 0) {
@@ -35,7 +35,16 @@ function activate(context) {
             }
         }
 
-
+        // Check for unclosed `/* */` comments
+        const openComments = (text.match(/\/\*/g) || []).length;
+        const closeComments = (text.match(/\*\//g) || []).length;
+        if (openComments > closeComments) {
+            diagnostics.push(new vscode.Diagnostic(
+                new vscode.Range(new vscode.Position(0, 0), new vscode.Position(0, 10)),
+                "Syntax Error: Unclosed `/*` comment block. Missing `*/`.",
+                vscode.DiagnosticSeverity.Error
+            ));
+        }
 
         // Check for missing semicolons in statements
         const missingSemicolon = /(?:PERFORM|EXECUTE|ASSERT|RETRACT|QUERY|POST|UPDATE|WAIT|ACHIEVE)\s+[^\n;]+(?:\n|$)/g;
