@@ -28,7 +28,7 @@ function activate(context) {
                 goalSnippet.detail = "Defines a GOAL that the JAM agent should achieve.";
                 completionItems.push(goalSnippet);
 
-                // 🔹 Fact Snippet
+                // Fact Snippet
                 const factSnippet = new vscode.CompletionItem("Fact Definition", vscode.CompletionItemKind.Snippet);
                 factSnippet.insertText = new vscode.SnippetString("FACTS:\n\tFACT ${1:name} \"${2:value}\";");
                 factSnippet.detail = "Defines a FACT in the agent's world model.";
