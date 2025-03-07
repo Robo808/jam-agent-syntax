@@ -23,14 +23,18 @@ function activate(context) {
         const text = document.getText();
 
         // Check for missing {}
-        const planMatches = text.match(/PLAN:\s*{\s*([\s\S]*?)\s*}/g);
-        if (!planMatches || planMatches.length === 0) {
-            diagnostics.push(new vscode.Diagnostic(
-                new vscode.Range(new vscode.Position(0, 0), new vscode.Position(0, 10)),
-                "Syntax Error: Missing `{}` in PLAN definition",
-                vscode.DiagnosticSeverity.Error
-            ));
+        const planExists = text.match(/\bPLAN:\b/); // Check if "PLAN:" exists anywhere
+        if (planExists) {
+            const planMatches = text.match(/PLAN:\s*{\s*([\s\S]*?)\s*}/g);
+            if (!planMatches || planMatches.length === 0) {
+                diagnostics.push(new vscode.Diagnostic(
+                    new vscode.Range(new vscode.Position(0, 0), new vscode.Position(0, 10)),
+                    "Syntax Error: Missing `{}` in PLAN definition",
+                    vscode.DiagnosticSeverity.Error
+                ));
+            }
         }
+
 
 
         // Check for missing semicolons in statements
