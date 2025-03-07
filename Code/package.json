@@ -2,7 +2,7 @@
     "name": "jam-agent-syntax",
     "displayName": "JAM Agent Syntax",
     "description": "Syntax highlighting, hover explanations, autocomplete, and error detection for JAM Agent in VS Code.",
-    "version": "1.6.0",
+    "version": "1.7.0",
     "publisher": "nechiforrJAMAgent",
     "repository": {
         "type": "git",

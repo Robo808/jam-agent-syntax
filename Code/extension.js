@@ -23,14 +23,15 @@ function activate(context) {
         const text = document.getText();
 
         // Check for missing {}
-        const planMatches = text.match(/PLAN:\s*{[^}]*}/g);
-        if (!planMatches) {
+        const planMatches = text.match(/PLAN:\s*{\s*([\s\S]*?)\s*}/g);
+        if (!planMatches || planMatches.length === 0) {
             diagnostics.push(new vscode.Diagnostic(
                 new vscode.Range(new vscode.Position(0, 0), new vscode.Position(0, 10)),
                 "Syntax Error: Missing `{}` in PLAN definition",
                 vscode.DiagnosticSeverity.Error
             ));
         }
+
 
         // Check for missing semicolons in statements
         const missingSemicolon = /(?:PERFORM|EXECUTE|ASSERT|RETRACT|QUERY|POST|UPDATE|WAIT|ACHIEVE)\s+[^\n;]+(?:\n|$)/g;
